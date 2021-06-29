@@ -1,0 +1,167 @@
+﻿
+<div id="PlaneSpotterMain">
+    <div id="divSummery" class="container-fluid" data-bind="visible: PlaneSpotterVM.IsPageSummeryVisible()">
+        <div><h4>Spotted Aircraft Summery</h4></div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Registration</th>
+                    <th scope="col">Make</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date</th>
+                    <th scope="col" />
+                    <th scope="col" />
+                </tr>
+                <tr>
+                    <th>
+                        <input id="RegSearchKey" type="text" maxlength="8" data-bind="value: PlaneSpotterVM.AircraftRegFilter(),
+                               valueUpdate: 'afterkeydown', event:{ keyup: PlaneSpotterVM.FilterAircraftList} ">
+                    </th>
+                    <th>
+                        <input id="MakeSearchKey" type="text" maxlength="128" data-bind="value: PlaneSpotterVM.AircraftMakeFilter(),
+                               valueUpdate: 'afterkeydown', event:{ keyup: PlaneSpotterVM.FilterAircraftList} ">
+                    </th>
+                    <th>
+                        <input id="ModelSearchKey" type="text" maxlength="128" data-bind="value: PlaneSpotterVM.AircraftModelFilter(),
+                               valueUpdate: 'afterkeydown', event:{ keyup: PlaneSpotterVM.FilterAircraftList} ">
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th />
+                    <th />
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: PlaneSpotterVM.FilteredSpottedPlanes">
+                <tr>
+                    <td data-bind="text:AircraftRegistration"></td>
+                    <td data-bind="text:AircraftMake"></td>
+                    <td data-bind="text:AircraftModel"></td>
+                    <td data-bind="text:Location"></td>
+                    <td data-bind="text: moment(SpottedDateTime).format('YYYY-MM-DD HH:mm')"></td>
+                    <td><a href='#' data-bind="event:{click:PlaneSpotterVM.EditSpottingInfo}">Edit</a></td>
+                    <td><a href='#' data-bind="event:{click:PlaneSpotterVM.DeleteSpottedAircraftDetails}">Delete</a></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <button type="button" class="btn btn-dark" data-bind="event:{click: PlaneSpotterVM.AddNewSpottingInfo()}">Add Info</button>
+    </div>
+
+    <div id="divDetails" class="container-fluid" data-bind="visible: !PlaneSpotterVM.IsPageSummeryVisible()">
+        <div>
+            <h4>Spotted Aircraft Informtion</h4>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <span>Aircraft Make</span>
+                </div>
+                <div class="col-lg-9">
+                    <input id="tMake" type="text" maxlength="128" data-bind="textInput:PlaneSpotterVM.AircraftMake" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <span>Aircraft Model</span>
+                </div>
+                <div class="col-lg-9">
+                    <input id="tModel" type="text" maxlength="128" data-bind="textInput:PlaneSpotterVM.AircraftModel" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <span>Aircraft Registration Number</span>
+                </div>
+                <div class="col-lg-9">
+                    <input id="tReg" type="text" maxlength="8" data-bind="textInput:PlaneSpotterVM.AircraftRegistration" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <span>Location</span>
+                </div>
+                <div class="col-lg-9">
+                    <input id="tLocation" type="text" maxlength="255" data-bind="textInput:PlaneSpotterVM.Location" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <span>Date and Time</span>
+                </div>
+                <div class="col-lg-9">
+                    @*<input id="txtOutDate" type='text' data-bind=" value: PlaneSpotterVM.SpottedDateTime()" />*@
+                    <input id="tTime" type="datetime-local" data-bind="value:PlaneSpotterVM.SpottedDateTime()" />
+                        @*<span data-bind="text : PlaneSpotterVM.SpottedDateTime()"></span>*@
+                         @*<input data-bind="datePicker : PlaneSpotterVM.SpottedDateTime()" type="date">*@
+                </div>
+            </div>
+            @*<div>
+                    <div class="container">
+                        <div class="well" data-bind="fileDrag: PlaneSpotterVM.SpottedImageFile">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <img style="height: 125px;" class="img-rounded  thumb" data-bind="attr: { src:  PlaneSpotterVM.SpottedImageFile().dataURL }, visible:  PlaneSpotterVM.SpottedImageFile().dataURL">
+                                    <div data-bind="ifnot:  PlaneSpotterVM.SpottedImageFile().dataURL">
+                                        <label class="drag-label">Drag file here</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="file" data-bind="fileInput:  PlaneSpotterVM.SpottedImageFile, customFileInput: {buttonClass: 'btn btn-success', fileNameClass: 'disabled form-control', onClear: onClear,}" accept="image/*" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Example select</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Example multiple select</label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Example textarea</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="cocontainer">
+            <div class="col-lg-4">
+                <button type="button" class="btn btn-dark" data-bind="event:{click: PlaneSpotterVM.IsPageSummeryVisible(true)}">Summery</button>
+                <button type="button" class="btn btn-dark" data-bind="event:{click: PlaneSpotterVM.ResetForm}">Reset</button>
+                <button type="button" class="btn btn-dark" data-bind="event:{click: PlaneSpotterVM.SaveSpottingInfo}">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script src="~/Scripts/app/PlaneSpotter/PlaneSpotter.js"></script>
+}

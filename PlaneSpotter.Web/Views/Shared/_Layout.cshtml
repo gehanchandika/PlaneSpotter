@@ -1,0 +1,29 @@
+﻿<div id="DivLayoutMain">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="navbar-brand">Plane Spotter</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/knockoutjs")
+    @Scripts.Render("~/bundles/momentjs")
+    @Scripts.Render("~/bundles/customscripts")
+
+
+    @RenderSection("scripts", required: false)
+
+</div>

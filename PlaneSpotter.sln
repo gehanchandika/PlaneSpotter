@@ -1,0 +1,86 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0C2F105D-707C-4C3A-BA94-466BB98B9DC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaneSpotter.Services", "PlaneSpotter.Services\PlaneSpotter.Services.csproj", "{87B90AB6-1D50-488A-ACD4-7E27B331C171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaneSpotter.Repo", "PlaneSpotter.Repo\PlaneSpotter.Repo.csproj", "{90FF7448-E58D-4E5D-8ADC-BA21F0BC8B34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaneSpotter.Models", "PlaneSpotter.Models\PlaneSpotter.Models.csproj", "{B75EA53A-4552-4E25-95C9-7E18C8375B28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaneSpotter.Web.API", "PlaneSpotter.Web.API\PlaneSpotter.Web.API.csproj", "{E44FBBC4-BEDA-4CE6-A6A1-1C331CB6EE27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaneSpotter.Web", "PlaneSpotter.Web\PlaneSpotter.Web.csproj", "{B6976583-6554-410D-AECC-DA31157F0B04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{14B45EB0-1363-4B87-8834-55F6F57C60B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87B90AB6-1D50-488A-ACD4-7E27B331C171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B90AB6-1D50-488A-ACD4-7E27B331C171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B90AB6-1D50-488A-ACD4-7E27B331C171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B90AB6-1D50-488A-ACD4-7E27B331C171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90FF7448-E58D-4E5D-8ADC-BA21F0BC8B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90FF7448-E58D-4E5D-8ADC-BA21F0BC8B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90FF7448-E58D-4E5D-8ADC-BA21F0BC8B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90FF7448-E58D-4E5D-8ADC-BA21F0BC8B34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B75EA53A-4552-4E25-95C9-7E18C8375B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B75EA53A-4552-4E25-95C9-7E18C8375B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B75EA53A-4552-4E25-95C9-7E18C8375B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B75EA53A-4552-4E25-95C9-7E18C8375B28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44FBBC4-BEDA-4CE6-A6A1-1C331CB6EE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44FBBC4-BEDA-4CE6-A6A1-1C331CB6EE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44FBBC4-BEDA-4CE6-A6A1-1C331CB6EE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44FBBC4-BEDA-4CE6-A6A1-1C331CB6EE27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6976583-6554-410D-AECC-DA31157F0B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6976583-6554-410D-AECC-DA31157F0B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6976583-6554-410D-AECC-DA31157F0B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6976583-6554-410D-AECC-DA31157F0B04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87B90AB6-1D50-488A-ACD4-7E27B331C171} = {0C2F105D-707C-4C3A-BA94-466BB98B9DC0}
+		{90FF7448-E58D-4E5D-8ADC-BA21F0BC8B34} = {0C2F105D-707C-4C3A-BA94-466BB98B9DC0}
+		{B75EA53A-4552-4E25-95C9-7E18C8375B28} = {0C2F105D-707C-4C3A-BA94-466BB98B9DC0}
+		{E44FBBC4-BEDA-4CE6-A6A1-1C331CB6EE27} = {0C2F105D-707C-4C3A-BA94-466BB98B9DC0}
+		{B6976583-6554-410D-AECC-DA31157F0B04} = {14B45EB0-1363-4B87-8834-55F6F57C60B0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40352096-4725-4A10-BF6A-72AE9003EF85}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://gehanchandika.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PlaneSpotter.Services\\PlaneSpotter.Services.csproj
+		SccProjectTopLevelParentUniqueName1 = PlaneSpotter.sln
+		SccProjectName1 = PlaneSpotter.Services
+		SccLocalPath1 = PlaneSpotter.Services
+		SccProjectUniqueName2 = PlaneSpotter.Repo\\PlaneSpotter.Repo.csproj
+		SccProjectTopLevelParentUniqueName2 = PlaneSpotter.sln
+		SccProjectName2 = PlaneSpotter.Repo
+		SccLocalPath2 = PlaneSpotter.Repo
+		SccProjectUniqueName3 = PlaneSpotter.Models\\PlaneSpotter.Models.csproj
+		SccProjectTopLevelParentUniqueName3 = PlaneSpotter.sln
+		SccProjectName3 = PlaneSpotter.Models
+		SccLocalPath3 = PlaneSpotter.Models
+		SccProjectUniqueName4 = PlaneSpotter.Web.API\\PlaneSpotter.Web.API.csproj
+		SccProjectTopLevelParentUniqueName4 = PlaneSpotter.sln
+		SccProjectName4 = PlaneSpotter.Web.API
+		SccLocalPath4 = PlaneSpotter.Web.API
+		SccProjectUniqueName5 = PlaneSpotter.Web\\PlaneSpotter.Web.csproj
+		SccProjectTopLevelParentUniqueName5 = PlaneSpotter.sln
+		SccProjectName5 = PlaneSpotter.Web
+		SccLocalPath5 = PlaneSpotter.Web
+	EndGlobalSection
+EndGlobal

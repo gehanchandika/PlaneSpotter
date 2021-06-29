@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PlaneSpotter.Web.Models.PlaneSpotterViewModel>
+
+@{
+    ViewBag.Title = "PlaneSpotter";
+}
+
+<h2>PlaneSpotter</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SpotId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpottedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AircraftRegistration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AircraftMake)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AircraftModel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpotId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpottedDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AircraftRegistration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AircraftMake)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AircraftModel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
