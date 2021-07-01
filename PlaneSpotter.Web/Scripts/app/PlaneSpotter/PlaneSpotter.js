@@ -140,6 +140,10 @@ var PlaneSpotterVM = {
             PlaneSpotterVM.ValidationMessage("Please enter valid Aircraft Registration Number!");
             PlaneSpotterVM.ValidationSuccess(false);
         }
+        else if (!PlaneSpotterVM.AircraftRegistration().match(/^[a-zA-Z0-9]{1,2}-[a-zA-Z0-9]{1,5}$/)) {
+            PlaneSpotterVM.ValidationMessage("Please enter valid Aircraft Registration Number in correct format!");
+            PlaneSpotterVM.ValidationSuccess(false);
+        }
         else if (PlaneSpotterVM.Location() == "") {
             PlaneSpotterVM.ValidationMessage("Please enter valid Location!");
             PlaneSpotterVM.ValidationSuccess(false);

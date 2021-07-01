@@ -168,6 +168,7 @@ namespace PlaneSpotter.Services
 
                 imgId = obj.ImageId;
             }
+            else
             {
                 selectedEntity.SpotAircraftImage = model.SpotAircraftImage;
 
