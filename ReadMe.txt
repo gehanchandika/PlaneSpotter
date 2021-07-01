@@ -12,3 +12,5 @@
   </appSettings>
 
 3. Then set both following projects run together. Once the application runs, it will automatically create the data base and add sample records for you.
+	PlaneSpotter.Web
+	PlaneSpotter.Web.API
