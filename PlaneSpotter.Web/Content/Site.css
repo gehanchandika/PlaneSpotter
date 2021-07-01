@@ -1,6 +1,7 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
+    position: relative;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,30 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.bg-image {
+    background-image: url('../Images/bg_image.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-trans {
+    background-color: rgba(255,255,255, 0.9);
+}
+
+.card-body {
+    overflow: auto;
+}
+
+.bg-theme {
+    background-color: #174866;
+}
+
+
+.spottedImage {
+    width: inherit;
+    height: inherit;
 }

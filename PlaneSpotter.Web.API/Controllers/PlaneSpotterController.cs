@@ -41,6 +41,24 @@ namespace PlaneSpotter.Web.API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetSelectedSpottedPlaneImage")]
+        public HttpResponseMessage GetSelectedSpottedPlaneImageInfo(long id)
+        {
+            try
+            {
+                var list = planeSpotterService.GetSpotInfoImage(id);
+                var responce = Request.CreateResponse(HttpStatusCode.OK, list);
+                return responce;
+            }
+            catch (Exception ex)
+            {
+                var responce = Request.CreateResponse(HttpStatusCode.InternalServerError);
+                return responce;
+            }
+        }
+
+
         [HttpDelete]
         [Route("DeleteSelectedSpottedPlanes")]
         public HttpResponseMessage DeleteSelectedSpottedPlanesInfo(long id)
@@ -60,7 +78,7 @@ namespace PlaneSpotter.Web.API.Controllers
 
         [HttpPost]
         [Route("SaveSpottedPlanes")]
-        public HttpResponseMessage SaveSpottedPlanesInfo([FromBody] SpottingModel model)
+        public HttpResponseMessage SaveSpottedPlanesInfo([FromBody] SpotInfoRichModel model)
         {
             try
             {
@@ -75,9 +93,9 @@ namespace PlaneSpotter.Web.API.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("UpdateSpottedPlanes")]
-        public HttpResponseMessage UpdateSpottedPlanesInfo([FromBody] SpottingModel model)
+        public HttpResponseMessage UpdateSpottedPlanesInfo([FromBody] SpotInfoRichModel model)
         {
             try
             {

@@ -55,12 +55,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\SpotImageEntity.cs" />
     <Compile Include="Initializer\PlaneSpotterInitializer.cs" />
     <Compile Include="PlaneSpotterContext.cs" />
     <Compile Include="Repo\AircraftRepository.cs" />
     <Compile Include="Repo\GenericRepository.cs" />
     <Compile Include="Repo\IAircraftRepository.cs" />
     <Compile Include="Repo\IGenericRepository.cs" />
+    <Compile Include="Repo\IImageRepository.cs" />
+    <Compile Include="Repo\ImageRepository.cs" />
     <Compile Include="Repo\IPlaneSpotterRepository.cs" />
     <Compile Include="Entities\AircraftEntity.cs" />
     <Compile Include="Repo\IUnitofWork.cs" />

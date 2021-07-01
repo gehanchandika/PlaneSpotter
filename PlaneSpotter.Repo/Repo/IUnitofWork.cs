@@ -11,6 +11,8 @@ namespace PlaneSpotter.Repo.Repo
         IGenericRepository<T> GenericRepository<T>() where T : class;
         IPlaneSpotterRepository<T> PlaneSpotterRepository<T>() where T : class;
         IAircraftRepository<T> AircraftRepository<T>() where T : class;
+        IImageRepository<T> ImageRepository<T>() where T : class;
+
         void SaveChanges();
     }
 }

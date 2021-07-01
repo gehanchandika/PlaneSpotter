@@ -137,7 +137,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaneSpotterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -151,12 +150,19 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\bg_image.jpg" />
+    <Content Include="Images\no_image_available.png" />
+    <Content Include="Images\plane_potter.png" />
     <Content Include="Scripts\common\CommonScripts.js" />
     <Content Include="Scripts\common\CustomBindings.js" />
     <Content Include="Scripts\app\PlaneSpotter\PlaneSpotter.js" />
     <Content Include="Scripts\lib\bootstrap-datepicker.js" />
+    <Content Include="Scripts\lib\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\lib\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\lib\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\lib\bootstrap.js" />
     <Content Include="Scripts\lib\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
     <None Include="Scripts\lib\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\lib\jquery-3.4.1.js" />
     <Content Include="Scripts\lib\jquery-3.4.1.min.js" />

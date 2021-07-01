@@ -36,6 +36,11 @@ namespace PlaneSpotter.Repo.Repo
             return CreateRepositoryInstance<PlaneSpotterRepository<T>, IPlaneSpotterRepository<T>>();
         }
 
+        public IImageRepository<T> ImageRepository<T>() where T : class
+        {
+            return CreateRepositoryInstance<ImageRepository<T>, IImageRepository<T>>();
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

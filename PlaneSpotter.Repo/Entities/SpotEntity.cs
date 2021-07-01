@@ -20,9 +20,10 @@ namespace PlaneSpotter.Repo.Entities
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }
         public long AircraftId { get; set; }
-        public string SpottedImageFile { get; set; }
+        public long ImageId { get; set; }
 
         public virtual ICollection<AircraftEntity> AircraftEntity { get; set; }
+        public virtual ICollection<SpotImageEntity> SpotImageEntity { get; set; }
 
     }
 }

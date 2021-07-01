@@ -15,19 +15,20 @@ namespace PlaneSpotter.Repo
     { 
         public PlaneSpotterContext() : base("name=PlaneSpotterContext")
         {
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<PlaneSpotterContext>());
+            
         }
 
         public DbSet<AircraftEntity> AircraftInfos { get; set; }
         public DbSet<SpotEntity> SpotInfos { get; set; }
-      
+        public DbSet<SpotImageEntity> SpotImageInfos { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Entity<SpotEntity>().Property(x => x.SpotId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            //modelBuilder.Entity<AircraftEntity>().Property(x => x.AircraftId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            
         }
 
     }

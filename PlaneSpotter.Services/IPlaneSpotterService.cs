@@ -7,14 +7,18 @@ namespace PlaneSpotter.Services
     {
         IEnumerable<AircraftModel> GetAllSpottedAircraftInfo();
 
-        IEnumerable<SpottingModel> GetAllSpottingInfo();
+        IEnumerable<SpotInfoModel> GetAllSpottingInfo();
 
-        void SavePlaneSpotInfo(SpottingModel model);
+        void SavePlaneSpotInfo(SpotInfoRichModel model);
 
-        void UpdatePlaneSpotInfo(SpottingModel model);
+        void UpdatePlaneSpotInfo(SpotInfoRichModel model);
 
         void DeleteSelectedSpottedPlanes(long id);
 
-        long SaveAircraftInfo(SpottingModel model);
+        long SaveAircraftInfo(SpotInfoRichModel model);
+
+        SpotInfoImageModel GetSpotInfoImage(long id);
+
+        long SaveSpottedAircraftImage(SpotInfoImageModel model);
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace PlaneSpotter.Web.Controllers
@@ -19,19 +20,15 @@ namespace PlaneSpotter.Web.Controllers
 
         public ActionResult Index()
         {
+            string PlaneSpotterAPIServiceURL = WebConfigurationManager.AppSettings["PlaneSpotterAPIServiceURL"];
 
-            //var x = planeSpotterService.GetAllSpottingInfo();
+            var objPS = new PlaneSpotterViewModel();
 
-            ////Save
-            ////planeSpotterService.SaveSpot();
-
-
-            //return View(x);
-
+            objPS.PlaneSpotterAPIServiceURL = PlaneSpotterAPIServiceURL;
 
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View("Index", objPS);
         }
     }
 }

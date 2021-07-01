@@ -4,20 +4,20 @@ using System.Linq;
 
 namespace PlaneSpotter.Repo.Repo
 {
-    public class AircraftRepository<T> : GenericRepository<T>, IAircraftRepository<T> where T : class
+    public class ImageRepository<T> : GenericRepository<T>, IImageRepository<T> where T : class
     {
         private readonly PlaneSpotterContext context;
         private readonly DbSet<T> entities;
 
-        public AircraftRepository(PlaneSpotterContext context) : base(context)
+        public ImageRepository(PlaneSpotterContext context) : base(context)
         {
             this.context = context;
             entities = context.Set<T>();
         }
 
-        public AircraftEntity GetByRegistration(string regNo)
+        public SpotImageEntity GetImageBySpotId(long spotId)
         {
-            return context.AircraftInfos.FirstOrDefault(x => x.AircraftRegistration == regNo);
+            return context.SpotImageInfos.FirstOrDefault(x => x.SpotId == spotId);
         }
     }
 }

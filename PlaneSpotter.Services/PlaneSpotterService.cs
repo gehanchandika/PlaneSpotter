@@ -34,12 +34,12 @@ namespace PlaneSpotter.Services
             return null;
         }
 
-        public IEnumerable<SpottingModel> GetAllSpottingInfo()
+        public IEnumerable<SpotInfoModel> GetAllSpottingInfo()
         {
             var spotList = unitOfWork.PlaneSpotterRepository<SpotEntity>().GetAll().ToList();
             var aircraftList = unitOfWork.AircraftRepository<AircraftEntity>().GetAll().ToList();
 
-            var aircraftSpotList = spotList.Join(aircraftList, x => x.AircraftId, y => y.AircraftId, (i, j) => new SpottingModel
+            var aircraftSpotList = spotList.Join(aircraftList, x => x.AircraftId, y => y.AircraftId, (i, j) => new SpotInfoModel
             {
                 SpotId = i.SpotId,
                 Location = i.Location,
@@ -47,8 +47,7 @@ namespace PlaneSpotter.Services
                 AircraftId = j.AircraftId,
                 AircraftMake = j.AircraftMake,
                 AircraftRegistration = j.AircraftRegistration,
-                AircraftModel = j.AircraftModel,
-                SpottedImageFile = i.SpottedImageFile
+                AircraftModel = j.AircraftModel
             }).ToList();
 
             if (aircraftSpotList != null && aircraftSpotList.Count > 0)
@@ -58,36 +57,12 @@ namespace PlaneSpotter.Services
             return null;
         }
 
-        public void SavePlaneSpotInfo(SpottingModel model)
+        public void SavePlaneSpotInfo(SpotInfoRichModel model)
         {
-            long tempAircraftId;
-
-            var newAircraftEntity = unitOfWork.AircraftRepository<AircraftEntity>().GetByRegistration(model.AircraftRegistration);
-
-            if (newAircraftEntity == null)
-                tempAircraftId = SaveAircraftInfo(model);
-            else
-                tempAircraftId = newAircraftEntity.AircraftId;
-
-            unitOfWork.PlaneSpotterRepository<SpotEntity>().Add(new SpotEntity
+            if (model != null)
             {
-                AircraftId = tempAircraftId,
-                IsDeleted = false,
-                Location = model.Location,
-                SpottedDateTime = model.SpottedDateTime,
-                SpottedImageFile = model.SpottedImageFile
-            });
-            unitOfWork.SaveChanges();
+                long tempAircraftId;
 
-        }
-
-        public void UpdatePlaneSpotInfo(SpottingModel model)
-        {
-            long tempAircraftId;
-            var selectedEntity = unitOfWork.PlaneSpotterRepository<SpotEntity>().Get(model.SpotId);
-
-            if (selectedEntity != null)
-            {
                 var newAircraftEntity = unitOfWork.AircraftRepository<AircraftEntity>().GetByRegistration(model.AircraftRegistration);
 
                 if (newAircraftEntity == null)
@@ -95,14 +70,48 @@ namespace PlaneSpotter.Services
                 else
                     tempAircraftId = newAircraftEntity.AircraftId;
 
-                selectedEntity.AircraftId = tempAircraftId;
-                selectedEntity.Location = model.Location;
-                selectedEntity.SpottedDateTime = model.SpottedDateTime;
-                selectedEntity.SpottedImageFile = model.SpottedImageFile;
 
+                var obj = unitOfWork.PlaneSpotterRepository<SpotEntity>().Add(new SpotEntity
+                {
+                    AircraftId = tempAircraftId,
+                    IsDeleted = false,
+                    Location = model.Location,
+                    SpottedDateTime = model.SpottedDateTime
+                });
 
-                unitOfWork.PlaneSpotterRepository<SpotEntity>().Update(selectedEntity);
                 unitOfWork.SaveChanges();
+
+                if (model.SpotAircraftImage != "")
+                    SaveSpottedAircraftImage(new SpotInfoImageModel { SpotId = obj.SpotId, SpotAircraftImage = model.SpotAircraftImage });
+            }
+        }
+
+        public void UpdatePlaneSpotInfo(SpotInfoRichModel model)
+        {
+            if (model != null)
+            {
+                long tempAircraftId;
+                var selectedEntity = unitOfWork.PlaneSpotterRepository<SpotEntity>().Get(model.SpotId);
+
+                if (selectedEntity != null)
+                {
+                    var newAircraftEntity = unitOfWork.AircraftRepository<AircraftEntity>().GetByRegistration(model.AircraftRegistration);
+
+                    if (newAircraftEntity == null)
+                        tempAircraftId = SaveAircraftInfo(model);
+                    else
+                        tempAircraftId = newAircraftEntity.AircraftId;
+
+                    selectedEntity.AircraftId = tempAircraftId;
+                    selectedEntity.Location = model.Location;
+                    selectedEntity.SpottedDateTime = model.SpottedDateTime;
+
+                    unitOfWork.PlaneSpotterRepository<SpotEntity>().Update(selectedEntity);
+                    unitOfWork.SaveChanges();
+
+                    if (model.SpotAircraftImage != "")
+                        SaveSpottedAircraftImage(new SpotInfoImageModel { SpotId = model.SpotId, SpotAircraftImage = model.SpotAircraftImage });
+                }
             }
         }
 
@@ -113,7 +122,7 @@ namespace PlaneSpotter.Services
             unitOfWork.SaveChanges();
         }
 
-        public long SaveAircraftInfo(SpottingModel model)
+        public long SaveAircraftInfo(SpotInfoRichModel model)
         {
             var obj = unitOfWork.AircraftRepository<AircraftEntity>().Add(new AircraftEntity
             {
@@ -125,6 +134,51 @@ namespace PlaneSpotter.Services
             unitOfWork.SaveChanges();
 
             return obj.AircraftId;
+        }
+
+        public SpotInfoImageModel GetSpotInfoImage(long id)
+        {
+            var imageEntity = unitOfWork.ImageRepository<SpotImageEntity>().GetImageBySpotId(id);
+
+            if (imageEntity != null)
+                return new SpotInfoImageModel
+                {
+                    ImageId = imageEntity.ImageId,
+                    SpotId = imageEntity.SpotId,
+                    SpotAircraftImage = imageEntity.SpotAircraftImage
+                };
+            else
+                return null;
+        }
+
+        public long SaveSpottedAircraftImage(SpotInfoImageModel model)
+        {
+            long imgId;
+            var selectedEntity = unitOfWork.ImageRepository<SpotImageEntity>().GetImageBySpotId(model.SpotId);
+
+            if (selectedEntity == null)
+            {
+                var obj = unitOfWork.ImageRepository<SpotImageEntity>().Add(new SpotImageEntity
+                {
+                    SpotId = model.SpotId,
+                    SpotAircraftImage = model.SpotAircraftImage
+                });
+
+                unitOfWork.SaveChanges();
+
+                imgId = obj.ImageId;
+            }
+            {
+                selectedEntity.SpotAircraftImage = model.SpotAircraftImage;
+
+                unitOfWork.ImageRepository<SpotImageEntity>().Update(selectedEntity);
+
+                unitOfWork.SaveChanges();
+
+                imgId = selectedEntity.ImageId;
+            }
+
+            return imgId;
         }
     }
 }
